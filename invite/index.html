@@ -129,14 +129,6 @@
             transform: translateY(0);
         }
 
-        .footer {
-            margin-top: 28px;
-            color: #a08070;
-            font-size: 14px;
-            font-style: italic;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-
         .loading {
             display: none;
             color: #73594d;
@@ -170,8 +162,6 @@
         <a href="#" class="button" id="openApp">Open in App</a>
 
         <p class="loading" id="loading">Opening app...</p>
-
-        <p class="footer">A fun way to reward kids for being awesome!</p>
     </div>
 
     <script>
@@ -181,6 +171,12 @@
         const token = urlParams.get('token');
         const role = urlParams.get('role') || 'child';
         const share = urlParams.get('share');
+        const familyName = urlParams.get('familyName');
+
+        // Update heading with family name if provided
+        if (familyName) {
+            document.querySelector('h1').textContent = `You're invited to join ${familyName} on Kid Points!`;
+        }
 
         // Build the app deep link
         let appUrl = `kidpoints://join?profile=${profile}&token=${token}&role=${role}`;

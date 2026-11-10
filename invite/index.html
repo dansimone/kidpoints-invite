@@ -17,8 +17,8 @@
     <meta name="twitter:description" content="Join the family and start tracking points and rewards.">
     <meta name="twitter:image" content="https://kidpoints.shattersoft.com/invite/preview.png">
 
-    <!-- iOS Smart App Banner (optional - shows "Open in App" banner in Safari) -->
-    <!-- <meta name="apple-itunes-app" content="app-id=YOUR_APP_ID"> -->
+    <!-- iOS Smart App Banner — native "Open / Get" banner in Safari for the real listing. -->
+    <meta name="apple-itunes-app" content="app-id=6757640015">
 
     <title>Kid Points Invite</title>
 
@@ -139,6 +139,15 @@
         .loading.show {
             display: block;
         }
+
+        .loading a {
+            color: #e6a030;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .loading a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -196,11 +205,12 @@
             // Try to open the app
             window.location.href = appUrl;
 
-            // If we're still here after 2 seconds, the app probably isn't installed
+            // Still here after 2s → app probably isn't installed. Show a real, tappable
+            // App Store link (not an auto-redirect, which can misfire if the app did open).
             setTimeout(function() {
-                loadingText.textContent = "App not installed? Get it from the App Store!";
-                // Uncomment when you have an App Store listing:
-                // window.location.href = "https://apps.apple.com/app/idYOUR_APP_ID";
+                loadingText.innerHTML =
+                    "Don't have the app yet? " +
+                    '<a href="https://apps.apple.com/app/id6757640015">Get Kid Points on the App Store</a>.';
             }, 2000);
         });
 
